@@ -1,13 +1,11 @@
 import ProcessTables from "@/models/processTables";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/utils/authOptions";
+// import { getServerSession } from "next-auth";
+// import { authOptions } from "@/utils/authOptions";
 
 export async function GET(req) {
     try {
         const { searchParams } = new URL(req.url);
         const id = searchParams.get('processTableId');
-
-        console.log('Fetching process table with ID:', id);
 
         const data = await ProcessTables.findById(id);
         return new Response(JSON.stringify(data), { status: 200 });

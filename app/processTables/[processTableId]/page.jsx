@@ -17,9 +17,7 @@ export default function ProcessTablesPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {                
-                console.log("ProcessTableId: ", processTableId);
                 const data = JSON.parse(await GetProcessTableById(processTableId));
-                console.log(data);
                 setName(data.name);
                 setAlgorithm(data.algorithm);
                 setTimeQuantum(data.timeQuantum);

@@ -103,7 +103,7 @@ return (
         Object.values(providers).map((provider,index)=>(
         <button
             key={index}
-            className="text text-gray-300 hover:text-[#66f] p-2 hover:bg-zinc-800 rounded-xl transition-colors duration-300 mt-auto flex flex-row items-center justify-center border border-gray-600 bg-zinc-900"
+            className="text text-gray-300 hover:text-[#66f] p-2 hover:bg-zinc-800 rounded-xl transition-colors duration-300 mt-auto flex flex-row items-center justify-center border border-gray-600 bg-zinc-900 cursor-pointer"
             onClick={() => signIn(provider.id)}
         >Sign In with Google 
 
