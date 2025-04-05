@@ -21,9 +21,9 @@ export default function Simulation(){
     useEffect(() => {
         const fetchData = async () => {
             try {                
-                console.log("ProcessTableId: ", processTableId);
-                const data = JSON.parse(await GetProcessTableById(processTableId));
-                console.log(data);
+                // const data = JSON.parse(await GetProcessTableById(processTableId));
+                const data = await fetch(`/api/processtables/${processTableId}`).then((res) => res.json());
+                
                 setName(data.name);
                 setAlgorithm(data.algorithm);
                 setTimeQuantum(data.timeQuantum);

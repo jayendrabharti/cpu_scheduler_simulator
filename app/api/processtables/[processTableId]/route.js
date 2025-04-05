@@ -2,12 +2,15 @@ import ProcessTables from "@/models/processTables";
 // import { getServerSession } from "next-auth";
 // import { authOptions } from "@/utils/authOptions";
 
-export async function GET(req) {
+export async function GET(req, { params }) {
     try {
-        const { searchParams } = new URL(req.url);
-        const id = searchParams.get('processTableId');
+        const { processTableId } = params;
 
-        const data = await ProcessTables.findById(id);
+        if (!processTableId) {
+            return new Response('ProcessTableId is required', { status: 400 });
+        }
+
+        const data = await ProcessTables.findById(processTableId);
         return new Response(JSON.stringify(data), { status: 200 });
 
     } catch (error) {

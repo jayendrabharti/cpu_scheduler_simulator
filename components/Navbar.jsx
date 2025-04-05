@@ -61,7 +61,7 @@ return (
         <Link 
             key={index}
             href={page.href} 
-            className={`text p-2 my-2 hover:bg-zinc-800 rounded-xl transition-colors duration-300 flex flex-row ${currentPage === page.href.split('/')[1] ? "text-[#66f]" : "text-gray-400 hover:text-[#66f]"}`}
+            className={`active:scale-90 text p-2 my-2 hover:bg-zinc-800 rounded-xl transition-all duration-300 flex flex-row ${currentPage === page.href.split('/')[1] ? "text-[#66f]" : "text-gray-400 hover:text-[#66f]"}`}
         >
             <page.icon
                 className="mr-2"
@@ -73,7 +73,7 @@ return (
         {session?.user 
         ? 
         <div
-         className={`cursor-pointer relative text-gray-300 hover:text-[#66f] p-2 hover:bg-zinc-800 rounded-xl transition-colors duration-300 mt-auto flex flex-row items-center justify-center border border-gray-600 ${menu.open ? "bg-zinc-800" : "bg-zinc-900"}`}
+         className={`cursor-pointer relative text-gray-300 hover:text-[#66f] p-2 hover:bg-zinc-800 rounded-xl transition-all duration-300 mt-auto flex flex-row items-center justify-center border border-gray-600 active:scale-90 ${menu.open ? "bg-zinc-800" : "bg-zinc-900"}`}
          onClick={()=>{setMenu(prev=>({open: !prev.open}))}}
         >
             <img 
@@ -103,7 +103,7 @@ return (
         Object.values(providers).map((provider,index)=>(
         <button
             key={index}
-            className="text text-gray-300 hover:text-[#66f] p-2 hover:bg-zinc-800 rounded-xl transition-colors duration-300 mt-auto flex flex-row items-center justify-center border border-gray-600 bg-zinc-900 cursor-pointer"
+            className="text text-gray-300 hover:text-[#66f] p-2 hover:bg-zinc-800 rounded-xl transition-all duration-300 mt-auto flex flex-row items-center justify-center border border-gray-600 bg-zinc-900 cursor-pointer active:scale-90 scale-100"
             onClick={() => signIn(provider.id)}
         >Sign In with Google 
 
