@@ -4,7 +4,7 @@ import ProcessTables from "@/models/processTables";
 
 export async function GET(req, { params }) {
     try {
-        const { processTableId } = params;
+        const { processTableId } = await params;
 
         if (!processTableId) {
             return new Response('ProcessTableId is required', { status: 400 });
