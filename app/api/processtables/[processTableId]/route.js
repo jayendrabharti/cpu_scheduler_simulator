@@ -1,6 +1,5 @@
 import ProcessTables from "@/models/processTables";
-// import { getServerSession } from "next-auth";
-// import { authOptions } from "@/utils/authOptions";
+import { connectToDB } from "@/utils/database";
 
 export async function GET(req, { params }) {
     try {
@@ -9,6 +8,8 @@ export async function GET(req, { params }) {
         if (!processTableId) {
             return new Response('ProcessTableId is required', { status: 400 });
         }
+
+        await connectToDB();
 
         const data = await ProcessTables.findById(processTableId);
         return new Response(JSON.stringify(data), { status: 200 });

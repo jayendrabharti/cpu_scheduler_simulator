@@ -17,7 +17,6 @@ export default function ProcessTablesPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {                
-              // const data = JSON.parse(await GetProcessTableById(processTableId));
               const data = await fetch(`/api/processtables/${processTableId}`).then((res) => res.json());
                 
                 setName(data.name);

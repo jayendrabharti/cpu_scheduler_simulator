@@ -1,6 +1,7 @@
 import ProcessTables from "@/models/processTables";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/authOptions";
+import { connectToDB } from "@/utils/database";
 
 export async function GET(req) {
     try {
@@ -9,6 +10,8 @@ export async function GET(req) {
             return new Response('Unauthorized', { status: 401 });
         };
 
+        await connectToDB();
+        
         const data = await ProcessTables.find({userID: session.user.id});
         return new Response(JSON.stringify(data), { status: 200 });
 
@@ -24,6 +27,8 @@ export async function POST(req) {
         if (!session) {
             return new Response('Unauthorized', { status: 401 });
         }
+
+        await connectToDB();
 
         const data = await ProcessTables.find({userID: session.user.id});
 
@@ -52,6 +57,8 @@ export async function DELETE(req) {
 
         const { id } = await req.json();
 
+        await connectToDB();
+
         const deletedTable = await ProcessTables.findOneAndDelete({
             _id: id,
             userID: session.user.id
@@ -77,6 +84,8 @@ export async function UPDATE(req) {
         }
 
         const { id, name, processes, algorithm, timeQuantum } = await req.json();
+
+        await connectToDB();
 
         const updatedTable = await ProcessTables.findOneAndUpdate(
             { _id: id, userID: session.user.id },
