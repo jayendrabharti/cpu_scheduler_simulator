@@ -4,8 +4,7 @@ import { BookA, Cpu, House,  Info,  LogOut, Play, ScrollIcon, Table } from "luci
 import Link from "next/link";
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { usePathname } from 'next/navigation';
+import { useRouter,usePathname } from "next/navigation";
 
 const pages = [
     { id: 1, name: "Home", href: "/",icon: House },

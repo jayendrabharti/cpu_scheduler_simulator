@@ -5,6 +5,7 @@ import { GetProcessTableById } from "../actions";
 import compute from "@/utils/compute";
 import { LoaderCircle, Circle, Pencil } from "lucide-react";
 import GanttChart from "@/components/GanttChart";
+import AIAnalysis from "@/components/AIAnalysis";
 
 export default function Simulation(){
 
@@ -24,6 +25,8 @@ export default function Simulation(){
                 // const data = JSON.parse(await GetProcessTableById(processTableId));
                 const data = await fetch(`/api/processtables/${processTableId}`).then((res) => res.json());
                 
+                console.log(data);
+
                 setName(data.name);
                 setAlgorithm(data.algorithm);
                 setTimeQuantum(data.timeQuantum);
@@ -49,7 +52,7 @@ export default function Simulation(){
 
 return(
 <div
-    className="w-full h-full"
+    className="w-full h-full overflow-y-scroll"
 >   
     <div
         className="border-b border-gray-600 p-4 flex flex-row items-center"
@@ -64,6 +67,8 @@ return(
     <div className="p-2">
         <GanttChart ganttData={result.ganttData}/>
     </div>
+
+    <AIAnalysis processes={processes}/>
 
     <div className="flex flex-col p-3 border border-gray-600 m-4 rounded">
         <h2 className="text-2xl font-bold mb-2">Performance Metrics</h2>
