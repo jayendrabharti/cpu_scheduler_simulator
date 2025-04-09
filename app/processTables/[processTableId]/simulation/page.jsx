@@ -1,7 +1,6 @@
 "use client";
 import { useParams, useRouter} from "next/navigation";
 import { useState, useEffect} from "react";
-import { GetProcessTableById } from "../actions";
 import compute from "@/utils/compute";
 import { LoaderCircle, Circle, Pencil } from "lucide-react";
 import GanttChart from "@/components/GanttChart";

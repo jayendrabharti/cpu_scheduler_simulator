@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { CirclePlus, LoaderCircle, Play, RotateCcw, Save, Trash2Icon } from "lucide-react";
-import { GetProcessTableById, UpdateProcessTableById } from "./actions";
+import { UpdateProcessTableById} from "@/actions/processTables";
 import { useParams, useRouter} from "next/navigation";
 
 export default function ProcessTablesPage() {
@@ -71,7 +71,7 @@ export default function ProcessTablesPage() {
                 timeQuantum,
                 name
             }
-            const data = JSON.parse(await UpdateProcessTableById(processTableId,updatedProcessTable));
+            await UpdateProcessTableById(processTableId, updatedProcessTable);
 
         } catch (err) {
             console.error('Error fetching data:', err);
