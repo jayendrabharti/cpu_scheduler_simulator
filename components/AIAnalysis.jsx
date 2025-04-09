@@ -2,7 +2,7 @@ import { AnalyzeProcesses } from "@/actions/AIAnalysic";
 import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import { motion } from "framer-motion";
-import { LoaderCircle } from "lucide-react";
+import { BrainCircuit, LoaderCircle } from "lucide-react";
 
 export default function AIAnalysis({ processes }) {
     const [isLoading, setIsLoading] = useState(true);
@@ -20,9 +20,11 @@ export default function AIAnalysis({ processes }) {
 
     return (
         <div className="p-4">
-            <span className="text-2xl font-bold">AI Analysis</span>
-            <hr className="my-2" />
-            <div className="flex flex-col justify-center items-center">
+            <span className="flex flex-row items-center text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-30% from-blue-500 to-pink-500 w-max">
+                <BrainCircuit className="text-blue-500 size-12 mr-2"/>
+                AI Analysis
+            </span>
+            <div className="flex flex-col justify-center items-center text-lg p-4 rounded-2xl bg-zinc-800 mt-4 text-zinc-300">
                 
                 {isLoading 
                 ? 
@@ -37,7 +39,6 @@ export default function AIAnalysis({ processes }) {
                     </motion.div>
                 }
             </div>
-            <hr className="my-2" />
         </div>
     );
 }
